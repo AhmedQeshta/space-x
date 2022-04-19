@@ -1,12 +1,13 @@
 import React from 'react';
 
 import './header.css';
+import video from '../../assets/cover.mp4';
 
 const Header = () => {
   return (
     <div className="home" id="Home">
       <video autoPlay muted>
-        <source src="/assets/cover.mp4" />
+        <source src={video} />
       </video>
 
       <div className="home-content">

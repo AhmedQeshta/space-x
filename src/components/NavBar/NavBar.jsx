@@ -8,8 +8,16 @@ const NavBar = () => {
   window.addEventListener('scroll', () => setHeight(window.scrollY));
 
   const checkHeight = () => {
-    return height >= 50 ? 'background' : '';
-  }
+    return height >= 500 ? 'background' : '';
+  };
+
+  const scrollToElement = (height) => {
+    window.scrollTo({
+      top: height,
+      left: 0,
+      behavior: 'smooth',
+    });
+  };
 
   return (
     <div className={`header ${checkHeight()}`}>
@@ -31,10 +39,10 @@ const NavBar = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink to="#Solar">Solar</NavLink>
+              <button onClick={() => scrollToElement(760)}>Solar</button>
             </li>
             <li>
-              <NavLink to="#Planets">Launches</NavLink>
+              <button onClick={() => scrollToElement(1200)}>Launches</button>
             </li>
           </ul>
         </div>
