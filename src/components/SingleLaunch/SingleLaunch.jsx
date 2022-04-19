@@ -1,11 +1,7 @@
 import React from 'react';
 
 const SingleLaunch = () => {
-  return (
-    <div>
-      SingleLaunch
-    </div>
-  );
+  return <div></div>;
 };
 
 export default SingleLaunch;
