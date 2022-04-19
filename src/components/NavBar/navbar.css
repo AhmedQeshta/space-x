@@ -1,0 +1,75 @@
+/* Header Section  */
+.header {
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+  height: auto;
+  background: #333333;
+  border-bottom: 1px solid #333333;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+.header-content {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.header .logo {
+  width: 10%;
+  float: left;
+}
+
+.header .logo .logo-link {
+  width: 200px;
+  color: #fff;
+  font-size: 20px;
+  display: inline-block;
+  padding: 30px 50px;
+  font-weight: 600;
+}
+
+.header .nav {
+  width: 100%;
+  float: right;
+  list-style: none;
+  text-align: right;
+  padding: 0 10px;
+  justify-content: flex-end;
+}
+
+.header .nav > li {
+  display: inline-block;
+  text-align: right;
+}
+
+.header .nav > li > a {
+  color: #fff;
+  padding: 30px 10px;
+  display: block;
+  font-size: 20px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.header .nav > li > a::after,
+.header .nav > li > a.active::after {
+  content: '';
+  display: block;
+  height: 3px;
+  background-color: #6195ff;
+  transition: width 0.5s;
+  /* margin-top: 13px; */
+}
+
+.header .nav > li > a.active::after {
+  width: 100%;
+}
+
+.header .nav > li > a::after {
+  width: 0;
+}
+
+.header .nav > li > a:hover::after {
+  width: 100%;
+}
