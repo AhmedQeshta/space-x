@@ -1,0 +1,22 @@
+.home video {
+        max-width: 100%;
+        height: auto;
+        background-size: cover;
+    }
+    
+    .home-content {
+        position: absolute;
+        width: 65%;
+        /* hero image */
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+    
+    .home .title {
+        color: #fff;
+        font-size: 50px;
+        text-transform: uppercase;
+        font-weight: 400;
+    }

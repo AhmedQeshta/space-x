@@ -1,0 +1,40 @@
+.pd-y {
+  padding: 120px 0;
+}
+
+.Solar {
+  background-color: #e2e2e2;
+}
+
+.solar-section {
+  display: flex;
+  flex-direction: row;
+}
+
+.Solar-item {
+  width: 50%;
+}
+
+.Solar .section-title {
+  color: black;
+  font-size: 52px;
+  margin-bottom: 20px;
+}
+
+.Solar-item .section-header {
+  text-align: left;
+}
+
+.Solar-item-desc {
+  padding-right: 20px;
+  color: rgb(0, 0, 0);
+  line-height: 1.8;
+  font-size: 17px;
+  margin-bottom: 20px;
+  margin-right: 20px;
+}
+
+.Solar-item-img img {
+  width: 100%;
+  border-radius: 30px;
+}

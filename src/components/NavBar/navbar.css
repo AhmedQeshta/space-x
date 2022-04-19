@@ -4,9 +4,10 @@
   width: 100%;
   z-index: 10;
   height: auto;
-  background: #333333;
-  border-bottom: 1px solid #333333;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+.background {
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 .header-content {
@@ -43,7 +44,7 @@
   text-align: right;
 }
 
-.header .nav > li > a {
+.header .nav > li > a , button{
   color: #fff;
   padding: 30px 10px;
   display: block;
@@ -59,7 +60,6 @@
   height: 3px;
   background-color: #6195ff;
   transition: width 0.5s;
-  /* margin-top: 13px; */
 }
 
 .header .nav > li > a.active::after {

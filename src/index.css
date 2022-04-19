@@ -2,7 +2,7 @@
 
 :root {
   --selection-color: #ffffff;
-  --selection-bg-color: #4cd48c;
+  --selection-bg-color: #6195ff;
 }
 
 *,
@@ -22,6 +22,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  background-color: #333;
 }
 
 ::-moz-selection {
@@ -64,7 +65,7 @@ ol {
 }
 
 .container {
-  width: 80%;
+  width: 75%;
   margin: auto;
 }
 
