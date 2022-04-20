@@ -11,7 +11,7 @@ const Launches = () => {
 
   useEffect(() => {
     const abortController = new AbortController();
-    fetch('https://api.spacexdata.com/v4/launches/', {
+    fetch('https://api.spacexdata.com/v4/launches/s', {
       signal: abortController.signal,
     })
       .then((res) => res.json())
