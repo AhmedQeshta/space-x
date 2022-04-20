@@ -16,5 +16,3 @@ export default function FilterByName({ search, updateSearch }) {
     </div>
   );
 }
-
-

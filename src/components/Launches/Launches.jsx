@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import useLaunchesHook from '../../hooks/useLaunchesHook';
 import FilterByName from '../Filter/FilterByName';
 import Launch from './Launch';
 import './launch.css';
@@ -6,58 +7,22 @@ import LoadingLaunches from './LoadingLaunches';
 import NotFoundLaunches from './NotFoundLaunches';
 
 export default function Launches() {
-  const [page, setPage] = useState(1);
-  const [paginate, setPaginate] = useState({
-    totalPages: 0,
-    currentPage: 0,
-    hasPrevPage: false,
-    hasNextPage: false,
-  });
-  const [launches, setLaunches] = useState([]);
-  const [filteredResults, setFilteredResults] = useState([]);
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(true);
-  const [search, setSearch] = useState('');
-
-  useEffect(() => {
-    const abortController = new AbortController();
-
-    const options = {
-      method: 'POST',
-      mode: 'cors',
-      cache: 'no-cache',
-      credentials: 'same-origin',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      redirect: 'follow',
-      referrerPolicy: 'no-referrer',
-      signal: abortController.signal,
-      body: JSON.stringify({ options: { page, limit: 12 } }),
-    };
-    fetch('https://api.spacexdata.com/v4/launches/query', options)
-      .then((res) => res.json())
-      .then(({ totalPages, hasPrevPage, hasNextPage, docs: data }) => {
-        setPaginate({
-          totalPages,
-          currentPage: page,
-          hasPrevPage,
-          hasNextPage,
-        });
-
-        setLaunches(data);
-        setError(false);
-        setLoading(false);
-      })
-      .catch(() => {
-        setError(true);
-        setLoading(false);
-      });
-    return () => {
-      abortController.abort();
-    };
-  }, [page]);
-
+  const [
+    launches,
+    filteredResults,
+    error,
+    loading,
+    search,
+    paginate,
+    page,
+    setPage,
+    setFilteredResults,
+    setSearch,
+  ] = useLaunchesHook();
+  /**
+   * Launches Component
+   * @param  {} {data}
+   */
   const Launches = ({ data }) => {
     return data ? (
       data.map((item) => {
@@ -68,6 +33,9 @@ export default function Launches() {
     );
   };
 
+  /**
+   * Loading Component
+   */
   const Loading = () => {
     const postLoader = new Array(8).fill(null);
     return (
@@ -75,10 +43,16 @@ export default function Launches() {
     );
   };
 
+  /**
+   * Error Component
+   */
   const Error = () => {
     return error && <NotFoundLaunches />;
   };
 
+  /**
+   * Launches Pagination Component
+   */
   const LaunchesPagination = () => {
     const changePage = (page) => {
       if (page !== paginate.currentPage) {
@@ -108,6 +82,9 @@ export default function Launches() {
     );
   };
 
+  /**
+   * Pagination button Component
+   */
   const Pagination = () => {
     const nextPage = () => {
       if (paginate.hasNextPage) {
@@ -142,7 +119,10 @@ export default function Launches() {
     );
   };
 
-  const updateSearch = ({ target: { name, value } }) => {
+  /**
+   * Update Search Input
+   */
+  const updateSearch = ({ target: { value } }) => {
     setSearch(value);
 
     if (search !== '') {
@@ -180,5 +160,3 @@ export default function Launches() {
     </div>
   );
 }
-
-
