@@ -18,7 +18,6 @@ const Launches = () => {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
-  const [type, setType] = useState(true);
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -163,7 +162,7 @@ const Launches = () => {
       </div>
 
       <div className='container'>
-        <FilterByName search={search} type={type} updateSearch={updateSearch} />
+        <FilterByName search={search}  updateSearch={updateSearch} />
       </div>
 
       <div className='launches-container container'>
