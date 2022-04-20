@@ -5,14 +5,16 @@ import NotFoundImage from '../../assets/notFound_Launches.svg';
 const NotFoundLaunches = () => {
   return (
     <div>
-      <div className='not-found-image-card'>
+      <div className="not-found-image-card">
         <img
-          className='not-found-image'
+          className="not-found-image"
           src={NotFoundImage}
-          alt='Page not found'
+          alt="Page not found"
         />
       </div>
-      <h3 className='not-found-title'>Something Went Wrong!</h3>
+      <h3 className="not-found-title">
+        No Launches, Maybe Something Went Wrong!
+      </h3>
     </div>
   );
 };

@@ -9,18 +9,18 @@ const Launch = ({
     links: {
       patch: { large },
     },
+    details,
   },
 }) => {
   return (
-    <div className='cont'>
-      <div className='launch-content'>
-        <div className='launch-item'>
+    <div className="cont">
+      <div className="launch-content">
+        <div className="launch-item">
           <div>
-            <LazyLoadImage src={large} alt={name} effect='opacity' />
+            <LazyLoadImage src={large} alt={name} effect="opacity" />
           </div>
-          <h2 className='launch-item-title'>{name}</h2>
-
-          <Link to={`/launch/${id}`} className='launch-item-link'>
+          <h2 className="launch-item-title">{name}</h2>
+          <Link to={`/launch/${id}`} className="launch-item-link">
             read more
           </Link>
         </div>

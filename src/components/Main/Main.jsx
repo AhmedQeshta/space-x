@@ -9,7 +9,7 @@ const Main = () => {
       <div className="container solar-section">
         <div className="Solar-item">
           <div className="section-header">
-            <h2 className="section-title">What is the solar system?</h2>
+            <h2 className="section-title">What is the Solar System?</h2>
           </div>
           <p className="Solar-item-desc">
             The Solar System is the gravitationally bound system of the Sun and

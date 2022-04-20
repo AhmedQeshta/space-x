@@ -10,6 +10,10 @@
   background-color: rgba(0, 0, 0, 0.6);
 }
 
+.details {
+  background-color: #333;
+}
+
 .header-content {
   overflow: hidden;
   display: flex;
