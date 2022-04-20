@@ -12,7 +12,7 @@ const NotFoundLaunches = () => {
           alt='Page not found'
         />
       </div>
-      <h3 className='not-found-title'>Some Thing Was Wrong</h3>
+      <h3 className='not-found-title'>Something Went Wrong!</h3>
     </div>
   );
 };

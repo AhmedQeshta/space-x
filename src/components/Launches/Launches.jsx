@@ -11,7 +11,7 @@ const Launches = () => {
 
   useEffect(() => {
     const abortController = new AbortController();
-    fetch('https://api.spacexdata.com/v4/launches/s', {
+    fetch('https://api.spacexdata.com/v4/launches/', {
       signal: abortController.signal,
     })
       .then((res) => res.json())
@@ -51,7 +51,7 @@ const Launches = () => {
   return (
     <div className='launch pd-y'>
       <div className='section-header'>
-        <h2 className='section-title'>Launches Times</h2>
+        <h2 className='section-title'>Launches</h2>
       </div>
 
       <div className='launches-container container'>
