@@ -55,8 +55,6 @@ const Launches = () => {
     };
   }, [page]);
 
-  console.log(paginate);
-
   const Launches = () => {
     return launches ? (
       launches.map((item) => {
@@ -148,7 +146,7 @@ const Launches = () => {
       </div>
 
       {/* Create Filter by name and Successfully for failed */}
-      
+
       <div className='launches-container container'>
         {loading ? (
           <Loading />
