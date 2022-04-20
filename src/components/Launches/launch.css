@@ -12,8 +12,11 @@
   box-shadow: 0 3px 6px rgb(0 0 0 / 15%);
   padding: 15px 10px;
   border-radius: 30px;
-  height: 325px;
-  max-height: 325px;
+  height: 300px;
+  width: 300px;
+  max-width: 270px;
+  max-height: 300px;
+  min-height: 300px;
   display: flex;
   flex-direction: column;
 }
@@ -32,11 +35,11 @@
   padding-bottom: 20px;
   width: 80%;
   height: 100%;
-  max-height: 300px;
-  min-height: 180px;
-  max-width: 300px;
-  min-width: 180px;
-  object-fit: cover;
+  max-height: 200px;
+  min-height: 200px;
+  max-width: 200px;
+  min-width: 200px;
+  object-fit: fill;
 }
 
 .launch-item-title {
@@ -113,22 +116,23 @@
 .pagination {
   display: flex;
   margin-top: 2rem;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
 }
 
 .pagination-button {
-  background: #471966;
-  color: #f1f1ef;
+  background: #f1f1ef;
+  color: #471966;
   padding: 10px 20px;
   border-radius: 30px;
   margin: 0 5px;
   cursor: pointer;
+  font-weight: bold;
 }
 
 .number-button {
-  background: #471966;
-  color: #f1f1ef;
+  background: #f1f1ef;
+  color: #471966;
   padding: 1rem;
   margin: 0 2px;
   cursor: pointer;
@@ -138,9 +142,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  font-weight: bold;
 }
 
 .active-page {
-  background: #311046;
+  background: #623f7a;
+  color: #fff;
   cursor: not-allowed;
 }

@@ -155,10 +155,10 @@ const Launches = () => {
         ) : (
           <>
             <Launches />
-            <Pagination />
           </>
         )}
       </div>
+      {!loading && !error && <Pagination />}
     </div>
   );
 };
