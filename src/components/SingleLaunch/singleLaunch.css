@@ -32,12 +32,12 @@
 }
 
 .success {
-  background-color: #00ff00;
+  background-color: #0dcc0d;
   color: #333;
 }
 
 .failed {
-  background-color: #ff0000;
+  background-color: #cc0f0f;
   color: #fff;
 }
 

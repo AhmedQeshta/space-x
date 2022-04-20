@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import LoadingLaunches from '../Launches/LoadingLaunches';
+import SingleLaunchLoading from './SingleLaunchLoading';
 import NotFoundLaunches from '../Launches/NotFoundLaunches';
 import './singleLaunch.css';
 
@@ -32,7 +32,7 @@ const SingleLaunch = () => {
 
   const checkLaunch = () => Object.keys(launch).length;
 
-  const Loading = () => loading && <LoadingLaunches />;
+  const Loading = () => loading && <SingleLaunchLoading />;
 
   const Error = () => error && <NotFoundLaunches />;
 
@@ -40,31 +40,29 @@ const SingleLaunch = () => {
     <div>
       {checkLaunch() && (
         <>
-          <div className="launch-head">
-            <h2 className="launch-title">{launch.name}</h2>
+          <div className='launch-head'>
+            <h2 className='launch-title'>{launch.name}</h2>
             {launch.success ? (
-              <p className="patch success">Success</p>
+              <p className='patch success'>Success</p>
             ) : (
-              <p className="patch failed">Failed</p>
+              <p className='patch failed'>Failed</p>
             )}
           </div>
-          <p className="launch-desc">{launch.details}</p>
+          <p className='launch-desc'>{launch.details}</p>
           <button
             onClick={() => window.open(launch.links.article, '_blank')}
-            className="read-more"
-          >
+            className='read-more'>
             Read More
           </button>
           <iframe
-            width="1350"
-            height="480"
+            width='1350'
+            height='480'
             src={`https://www.youtube.com/embed/${launch.links.youtube_id}`}
-            title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            title='YouTube video player'
+            frameBorder='0'
+            allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
             allowFullScreen
-            className="launch-video"
-          ></iframe>
+            className='launch-video'></iframe>
         </>
       )}
     </div>

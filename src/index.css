@@ -76,3 +76,24 @@ ol {
   left: 0;
   background-color: rgba(0, 0, 0, 0.6);
 }
+
+/* scrollbar Style */
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #505559;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #32383c;
+}
