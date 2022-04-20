@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 import './navbar.css';
 
-const NavBar = () => {
+const NavBar = (props) => {
   const [height, setHeight] = useState(0);
   window.addEventListener('scroll', () => setHeight(window.scrollY));
 
@@ -21,22 +21,19 @@ const NavBar = () => {
 
   return (
     <div className={`header ${checkHeight()}`}>
-      <div className="container">
-        <div className="header-content">
-          <div className="logo">
-            <NavLink className="logo-link" to="/">
+      <div className='container'>
+        <div className='header-content'>
+          <div className='logo'>
+            <NavLink className='logo-link' to='/'>
               SpaceX
             </NavLink>
           </div>
 
-          <ul className="nav">
+          <ul className='nav'>
             <li>
-              <NavLink
-                to="/"
-                className={(isActive) => (isActive ? 'active' : '')}
-              >
+              <button className='active' onClick={() => scrollToElement(0)}>
                 Home
-              </NavLink>
+              </button>
             </li>
             <li>
               <button onClick={() => scrollToElement(760)}>Solar</button>

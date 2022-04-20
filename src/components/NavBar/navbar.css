@@ -44,7 +44,8 @@
   text-align: right;
 }
 
-.header .nav > li > a , button{
+.header .nav > li > a,
+.header .nav > li > button {
   color: #fff;
   padding: 30px 10px;
   display: block;
@@ -54,6 +55,8 @@
 }
 
 .header .nav > li > a::after,
+.header .nav > li > button::after,
+.header .nav > li > button.active::after,
 .header .nav > li > a.active::after {
   content: '';
   display: block;
@@ -62,14 +65,17 @@
   transition: width 0.5s;
 }
 
+.header .nav > li > button.active::after,
 .header .nav > li > a.active::after {
   width: 100%;
 }
 
-.header .nav > li > a::after {
+.header .nav > li > a::after,
+.header .nav > li > button::after {
   width: 0;
 }
 
-.header .nav > li > a:hover::after {
+.header .nav > li > a:hover::after,
+.header .nav > li > button:hover::after {
   width: 100%;
 }
