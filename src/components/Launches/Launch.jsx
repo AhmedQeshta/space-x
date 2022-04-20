@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-const Launch = ({
+
+export default function Launch({
   launch: {
     id,
     name,
@@ -10,7 +11,7 @@ const Launch = ({
       patch: { large },
     },
   },
-}) => {
+}) {
   return (
     <div className='cont'>
       <div className='launch-content'>
@@ -30,6 +31,4 @@ const Launch = ({
       </div>
     </div>
   );
-};
-
-export default Launch;
+}

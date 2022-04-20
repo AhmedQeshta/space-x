@@ -2,7 +2,7 @@ import React from 'react';
 
 import './filterByName.css';
 
-const FilterByName = ({ search, updateSearch }) => {
+export default function FilterByName({ search, updateSearch }) {
   return (
     <div className='form__input__filter'>
       <input
@@ -15,6 +15,6 @@ const FilterByName = ({ search, updateSearch }) => {
       />
     </div>
   );
-};
+}
 
-export default FilterByName;
+

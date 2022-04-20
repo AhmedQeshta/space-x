@@ -5,7 +5,7 @@ import './launch.css';
 import LoadingLaunches from './LoadingLaunches';
 import NotFoundLaunches from './NotFoundLaunches';
 
-const Launches = () => {
+export default function Launches() {
   const [page, setPage] = useState(1);
   const [paginate, setPaginate] = useState({
     totalPages: 0,
@@ -162,7 +162,7 @@ const Launches = () => {
       </div>
 
       <div className='container'>
-        <FilterByName search={search}  updateSearch={updateSearch} />
+        <FilterByName search={search} updateSearch={updateSearch} />
       </div>
 
       <div className='launches-container container'>
@@ -179,6 +179,6 @@ const Launches = () => {
       {!loading && !error && search.length < 1 && <Pagination />}
     </div>
   );
-};
+}
 
-export default Launches;
+
