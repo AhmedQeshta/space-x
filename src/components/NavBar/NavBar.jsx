@@ -39,7 +39,7 @@ const NavBar = (props) => {
               <button onClick={() => scrollToElement(760)}>Solar</button>
             </li>
             <li>
-              <button onClick={() => scrollToElement(1200)}>Launches</button>
+              <button onClick={() => scrollToElement(1360)}>Launches</button>
             </li>
           </ul>
         </div>
