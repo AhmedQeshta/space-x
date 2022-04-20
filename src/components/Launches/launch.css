@@ -1,0 +1,105 @@
+.launch {
+  background-image: url(../../assets/background_launched.jpg);
+  position: relative;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.launch-item {
+  text-align: center;
+  margin: 15px 0;
+  background-color: #f1f1ef;
+  box-shadow: 0 3px 6px rgb(0 0 0 / 15%);
+  padding: 15px 10px;
+  border-radius: 30px;
+  height: 350px;
+  max-height: 350px;
+  display: flex;
+  flex-direction: column;
+}
+
+.cont {
+  display: flex;
+  justify-content: center;
+}
+
+.launch-item.mg {
+  margin-left: 4.4%;
+  margin-right: 4.4%;
+}
+
+.launch-item img {
+  padding-bottom: 20px;
+  width: 80%;
+  height: 100%;
+  max-height: 300px;
+  max-width: 300px;
+  object-fit: cover;
+}
+
+.launch-item-title {
+  text-transform: capitalize;
+  margin-bottom: 8px;
+  transition: color 0.5s;
+  font-size: 1.2rem;
+}
+
+.launch-item-link {
+  color: #301244;
+  text-transform: capitalize;
+  margin-top: 20px;
+  margin: auto auto 0 auto;
+  transition: all ease-in-out 0.3s;
+  background: #471966;
+  color: #f1f1ef;
+  padding: 10px 20px;
+  border-radius: 30px;
+  width: 50%;
+}
+
+.launch-item-link:hover {
+  background: #311046;
+}
+
+.launch .section-header {
+  text-align: center;
+  margin-bottom: 20px;
+  height: 120px;
+  line-height: 120px;
+}
+
+.launch .section-header .section-title {
+  font-size: 55px;
+  text-transform: capitalize;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.launch.pd-y {
+  padding: 3rem 0;
+}
+
+.launches-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 0 2.5rem;
+}
+
+.not-found-image-card {
+  width: 25%;
+  margin: 0 auto;
+}
+
+.not-found-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.not-found-title {
+  color: #f1f1ef;
+  text-transform: capitalize;
+  margin-top: 2.5rem;
+  font-size: 1.8rem;
+  text-align: center;
+}
