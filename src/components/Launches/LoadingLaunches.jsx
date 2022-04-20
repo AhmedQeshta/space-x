@@ -2,11 +2,9 @@ import React from 'react';
 
 import ContentLoader from 'react-content-loader';
 
-//
-
-const LoadingPost = () => {
+const LoadingLaunches = () => {
   return (
-    <div className='card__loading'>
+    <div className='launch__loading'>
       <ContentLoader
         seed={2}
         width={450}
@@ -22,4 +20,4 @@ const LoadingPost = () => {
   );
 };
 
-export default LoadingPost;
+export default LoadingLaunches;

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Launch from './Launch';
 import './launch.css';
-import LoadingPost from './LoadingLaunches';
+import LoadingLaunches from './LoadingLaunches';
 import NotFoundLaunches from './NotFoundLaunches';
 
 const Launches = () => {
@@ -35,13 +35,13 @@ const Launches = () => {
         return <Launch key={item.id} launch={item} />;
       })
     ) : (
-      <div>no</div>
+        <NotFoundLaunches />
     );
   };
 
   const Loading = () => {
     const postLoader = ['1', '2', '3', '4', '5', '6', '7', '8'];
-    return loading && postLoader.map((item) => <LoadingPost key={item} />);
+    return loading && postLoader.map((item) => <LoadingLaunches key={item} />);
   };
 
   const Error = () => {
