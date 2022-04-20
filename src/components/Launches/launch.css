@@ -12,8 +12,8 @@
   box-shadow: 0 3px 6px rgb(0 0 0 / 15%);
   padding: 15px 10px;
   border-radius: 30px;
-  height: 400px;
-  max-height: 400px;
+  height: 350px;
+  max-height: 350px;
   display: flex;
   flex-direction: column;
 }
@@ -31,15 +31,18 @@
 
 .launch-item img {
   padding-bottom: 20px;
-  width: 100%;
+  width: 80%;
   height: 100%;
+  max-height: 350px;
+  max-width: 350px;
   object-fit: cover;
 }
 
 .launch-item-title {
   text-transform: capitalize;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   transition: color 0.5s;
+  font-size: 1.2rem;
 }
 
 .launch-item-link {
