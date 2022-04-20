@@ -12,8 +12,8 @@
   box-shadow: 0 3px 6px rgb(0 0 0 / 15%);
   padding: 15px 10px;
   border-radius: 30px;
-  height: 350px;
-  max-height: 350px;
+  height: 325px;
+  max-height: 325px;
   display: flex;
   flex-direction: column;
 }
@@ -33,7 +33,9 @@
   width: 80%;
   height: 100%;
   max-height: 300px;
+  min-height: 180px;
   max-width: 300px;
+  min-width: 180px;
   object-fit: cover;
 }
 
@@ -42,6 +44,10 @@
   margin-bottom: 8px;
   transition: color 0.5s;
   font-size: 1.2rem;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  overflow: hidden;
 }
 
 .launch-item-link {
@@ -102,4 +108,39 @@
   margin-top: 2.5rem;
   font-size: 1.8rem;
   text-align: center;
+}
+
+.pagination {
+  display: flex;
+  margin-top: 2rem;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.pagination-button {
+  background: #471966;
+  color: #f1f1ef;
+  padding: 10px 20px;
+  border-radius: 30px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.number-button {
+  background: #471966;
+  color: #f1f1ef;
+  padding: 1rem;
+  margin: 0 2px;
+  cursor: pointer;
+  width: 1.5rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.active-page {
+  background: #311046;
+  cursor: not-allowed;
 }

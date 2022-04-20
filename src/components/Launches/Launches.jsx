@@ -5,17 +5,43 @@ import LoadingLaunches from './LoadingLaunches';
 import NotFoundLaunches from './NotFoundLaunches';
 
 const Launches = () => {
+  const [page, setPage] = useState(1);
+  const [paginate, setPaginate] = useState({
+    totalPages: 0,
+    currentPage: 0,
+    hasPrevPage: false,
+    hasNextPage: false,
+  });
   const [launches, setLaunches] = useState([]);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const abortController = new AbortController();
-    fetch('https://api.spacexdata.com/v4/launches/', {
+    // https://api.spacexdata.com/v4/launches
+    const options = {
+      method: 'POST',
+      mode: 'cors',
+      cache: 'no-cache',
+      credentials: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      redirect: 'follow',
+      referrerPolicy: 'no-referrer',
       signal: abortController.signal,
-    })
+      body: JSON.stringify({ options: { page, limit: 12 } }),
+    };
+    fetch('https://api.spacexdata.com/v4/launches/query', options)
       .then((res) => res.json())
-      .then((data) => {
+      .then(({ totalPages, hasPrevPage, hasNextPage, docs: data }) => {
+        setPaginate({
+          totalPages,
+          currentPage: page,
+          hasPrevPage,
+          hasNextPage,
+        });
+
         setLaunches(data);
         setError(false);
         setLoading(false);
@@ -27,7 +53,9 @@ const Launches = () => {
     return () => {
       abortController.abort();
     };
-  }, []);
+  }, [page]);
+
+  console.log(paginate);
 
   const Launches = () => {
     return launches ? (
@@ -35,17 +63,82 @@ const Launches = () => {
         return <Launch key={item.id} launch={item} />;
       })
     ) : (
-        <NotFoundLaunches />
+      <NotFoundLaunches />
     );
   };
 
   const Loading = () => {
-    const postLoader = ['1', '2', '3', '4', '5', '6', '7', '8'];
-    return loading && postLoader.map((item) => <LoadingLaunches key={item} />);
+    const postLoader = new Array(8).fill(null);
+    return (
+      loading && postLoader.map((_, index) => <LoadingLaunches key={index} />)
+    );
   };
 
   const Error = () => {
     return error && <NotFoundLaunches />;
+  };
+
+  const LaunchesPagination = () => {
+    const changePage = (page) => {
+      if (page !== paginate.currentPage) {
+        setPage(page);
+      }
+    };
+    const launchesArray = new Array(paginate.totalPages).fill(null);
+
+    return (
+      launchesArray.length > 0 && (
+        <>
+          {launchesArray.map((item, index) => {
+            return (
+              <button
+                title={index + 1}
+                className={`number-button ${
+                  paginate.currentPage === index + 1 ? 'active-page' : ''
+                }`}
+                key={index + 1}
+                onClick={() => changePage(index + 1)}>
+                {index + 1}
+              </button>
+            );
+          })}
+        </>
+      )
+    );
+  };
+
+  const Pagination = () => {
+    const nextPage = () => {
+      if (paginate.hasNextPage) {
+        setPage(page + 1);
+      }
+    };
+    const prevPage = () => {
+      if (paginate.hasPrevPage) {
+        setPage(page - 1);
+      }
+    };
+    return (
+      <div className='pagination'>
+        <button
+          title='Prevues'
+          className={`pagination-button ${
+            paginate.currentPage === 1 ? 'active-page' : ''
+          }`}
+          onClick={prevPage}>
+          Prevues
+        </button>
+        <LaunchesPagination />
+        <button
+          title='Next'
+          className={`pagination-button ${
+            paginate.currentPage === paginate.totalPages ? 'active-page' : ''
+          }`}
+          onClick={nextPage}>
+          Next
+        </button>
+      </div>
+    );
   };
 
   return (
@@ -54,8 +147,19 @@ const Launches = () => {
         <h2 className='section-title'>Launches</h2>
       </div>
 
+      {/* Create Filter by name and Successfully for failed */}
+      
       <div className='launches-container container'>
-        {loading ? <Loading /> : error ? <Error /> : <Launches />}
+        {loading ? (
+          <Loading />
+        ) : error ? (
+          <Error />
+        ) : (
+          <>
+            <Launches />
+            <Pagination />
+          </>
+        )}
       </div>
     </div>
   );
