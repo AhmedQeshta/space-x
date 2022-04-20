@@ -3,7 +3,7 @@ import React from 'react';
 import './header.css';
 import video from '../../assets/cover.mp4';
 
-const Header = () => {
+export default function Header() {
   return (
     <div className='home' id='Home'>
       <video autoPlay muted loop>
@@ -15,6 +15,6 @@ const Header = () => {
       </div>
     </div>
   );
-};
+}
 
-export default Header;
+

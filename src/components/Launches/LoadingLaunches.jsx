@@ -2,7 +2,7 @@ import React from 'react';
 
 import ContentLoader from 'react-content-loader';
 
-const LoadingLaunches = () => {
+export default function LoadingLaunches() {
   return (
     <div className='launch__loading'>
       <ContentLoader
@@ -18,6 +18,6 @@ const LoadingLaunches = () => {
       </ContentLoader>
     </div>
   );
-};
+}
 
-export default LoadingLaunches;
+
