@@ -29,16 +29,15 @@
   border-radius: 50px;
   border: none;
   font-weight: 600;
+  color: #fff;
 }
 
 .success {
-  background-color: #0dcc0d;
-  color: #333;
+  background-color: #19c919;
 }
 
 .failed {
   background-color: #cc0f0f;
-  color: #fff;
 }
 
 .launch-desc {

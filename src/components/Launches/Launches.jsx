@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import FilterByName from '../Filter/FilterByName';
 import Launch from './Launch';
 import './launch.css';
 import LoadingLaunches from './LoadingLaunches';
@@ -13,12 +14,14 @@ const Launches = () => {
     hasNextPage: false,
   });
   const [launches, setLaunches] = useState([]);
+  const [filteredResults, setFilteredResults] = useState([]);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
     const abortController = new AbortController();
-    // https://api.spacexdata.com/v4/launches
+
     const options = {
       method: 'POST',
       mode: 'cors',
@@ -55,9 +58,9 @@ const Launches = () => {
     };
   }, [page]);
 
-  const Launches = () => {
-    return launches ? (
-      launches.map((item) => {
+  const Launches = ({ data }) => {
+    return data ? (
+      data.map((item) => {
         return <Launch key={item.id} launch={item} />;
       })
     ) : (
@@ -139,13 +142,28 @@ const Launches = () => {
     );
   };
 
+  const updateSearch = ({ target: { name, value } }) => {
+    setSearch(value);
+
+    if (search !== '') {
+      const filterResult = launches.filter(({ name }) => {
+        return name.toLowerCase().includes(search.toLowerCase());
+      });
+      setFilteredResults(filterResult);
+    } else {
+      setFilteredResults(launches);
+    }
+  };
+
   return (
     <div className='launch pd-y'>
       <div className='section-header'>
         <h2 className='section-title'>Launches</h2>
       </div>
 
-      {/* Create Filter by name and Successfully for failed */}
+      <div className='container'>
+        <FilterByName search={search}  updateSearch={updateSearch} />
+      </div>
 
       <div className='launches-container container'>
         {loading ? (
@@ -154,11 +172,11 @@ const Launches = () => {
           <Error />
         ) : (
           <>
-            <Launches />
+            <Launches data={search.length > 1 ? filteredResults : launches} />
           </>
         )}
       </div>
-      {!loading && !error && <Pagination />}
+      {!loading && !error && search.length < 1 && <Pagination />}
     </div>
   );
 };
