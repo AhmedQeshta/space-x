@@ -1,4 +1,5 @@
 import React from 'react';
+
 import useLaunchesHook from '../../hooks/useLaunchesHook';
 import FilterByName from '../Filter/FilterByName';
 import Launch from './Launch';
@@ -23,40 +24,19 @@ export default function Launches() {
    * Launches Component
    * @param  {} {data}
    */
-  const Launches = ({ data }) => {
-    return data ? (
-      data.map((item) => {
-        return <Launch key={item.id} launch={item} />;
-      })
-    ) : (
-      <NotFoundLaunches />
-    );
-  };
-
-  /**
-   * Loading Component
-   */
-  const Loading = () => {
-    const postLoader = new Array(8).fill(null);
-    return (
-      loading && postLoader.map((_, index) => <LoadingLaunches key={index} />)
-    );
-  };
-
-  /**
-   * Error Component
-   */
-  const Error = () => {
-    return error && <NotFoundLaunches />;
-  };
+  function RenderLaunches({ data }) {
+    return data.map((item) => {
+      return <Launch key={item.id} launch={item} />;
+    });
+  }
 
   /**
    * Launches Pagination Component
    */
-  const LaunchesPagination = () => {
-    const changePage = (page) => {
-      if (page !== paginate.currentPage) {
-        setPage(page);
+  function LaunchesPagination() {
+    const changePage = (numberPage) => {
+      if (numberPage !== paginate.currentPage) {
+        setPage(numberPage);
       }
     };
     const launchesArray = new Array(paginate.totalPages).fill(null);
@@ -65,27 +45,29 @@ export default function Launches() {
       launchesArray.length > 0 && (
         <>
           {launchesArray.map((item, index) => {
+            const pageNumber = index + 1;
             return (
               <button
-                title={index + 1}
+                title={pageNumber}
+                type="button"
                 className={`number-button ${
-                  paginate.currentPage === index + 1 ? 'active-page' : ''
+                  paginate.currentPage === pageNumber ? 'active-page' : ''
                 }`}
-                key={index + 1}
-                onClick={() => changePage(index + 1)}>
-                {index + 1}
+                key={pageNumber}
+                onClick={() => changePage(pageNumber)}>
+                {pageNumber}
               </button>
             );
           })}
         </>
       )
     );
-  };
+  }
 
   /**
    * Pagination button Component
    */
-  const Pagination = () => {
+  function Pagination() {
     const nextPage = () => {
       if (paginate.hasNextPage) {
         setPage(page + 1);
@@ -97,9 +79,10 @@ export default function Launches() {
       }
     };
     return (
-      <div className='pagination'>
+      <div className="pagination">
         <button
-          title='Prevues'
+          title="Prevues"
+          type="button"
           className={`pagination-button ${
             paginate.currentPage === 1 ? 'active-page' : ''
           }`}
@@ -108,7 +91,8 @@ export default function Launches() {
         </button>
         <LaunchesPagination />
         <button
-          title='Next'
+          title="Next"
+          type="button"
           className={`pagination-button ${
             paginate.currentPage === paginate.totalPages ? 'active-page' : ''
           }`}
@@ -117,7 +101,7 @@ export default function Launches() {
         </button>
       </div>
     );
-  };
+  }
 
   /**
    * Update Search Input
@@ -135,28 +119,39 @@ export default function Launches() {
     }
   };
 
+  function LaunchesComponents() {
+    if (loading) {
+      const postLoader = [1, 2, 3, 4, 5, 6, 7, 8];
+      return (
+        loading && postLoader.map((item) => <LoadingLaunches key={item} />)
+      );
+    }
+    if (error) {
+      return <NotFoundLaunches />;
+    }
+    return (
+      <RenderLaunches data={search.length > 1 ? filteredResults : launches} />
+    );
+  }
+
+  function PaginateLaunches() {
+    return !loading && !error && search.length < 1 && <Pagination />;
+  }
+
   return (
-    <div className='launch pd-y'>
-      <div className='section-header'>
-        <h2 className='section-title'>Launches</h2>
+    <div className="launch pd-y">
+      <div className="section-header">
+        <h2 className="section-title">Launches</h2>
       </div>
 
-      <div className='container'>
+      <div className="container">
         <FilterByName search={search} updateSearch={updateSearch} />
       </div>
 
-      <div className='launches-container container'>
-        {loading ? (
-          <Loading />
-        ) : error ? (
-          <Error />
-        ) : (
-          <>
-            <Launches data={search.length > 1 ? filteredResults : launches} />
-          </>
-        )}
+      <div className="launches-container container">
+        <LaunchesComponents />
       </div>
-      {!loading && !error && search.length < 1 && <Pagination />}
+      <PaginateLaunches />
     </div>
   );
 }
