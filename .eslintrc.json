@@ -1,0 +1,54 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "jest": true
+  },
+  "extends": [
+    "react-app",
+    "react-app/jest",
+    "airbnb",
+    "plugin:jsx-a11y/recommended",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["react", "prettier", "jsx-a11y"],
+  "rules": {
+    "no-console": "warn",
+    "consistent-return": "off",
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "lf",
+        "printWidth": 80,
+        "trailingComma": "all",
+        "semi": true,
+        "doubleQuote": true,
+        "jsxSingleQuote": false,
+        "singleQuote": true,
+        "useTabs": false,
+        "tabWidth": 2,
+        "bracketSpacing": true,
+        "bracketSameLine": true
+      }
+    ],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/no-unstable-nested-components": ["off", { "allowAsProps": true }],
+    "react/prop-types": ["off", { "forbid": ["any", "array", "object"] }],
+    "react/forbid-prop-types": [
+      "off",
+      {
+        "forbid": ["any", "array", "object"],
+        "checkContextTypes": true,
+        "checkChildContextTypes": true
+      }
+    ]
+  }
+}

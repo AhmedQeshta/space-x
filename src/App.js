@@ -1,6 +1,5 @@
-import React from 'react';
-
 import { Routes, Route } from 'react-router-dom';
+import React from 'react';
 import NavBar from './components/NavBar/NavBar';
 import Footer from './components/Footer/Footer';
 
@@ -14,9 +13,9 @@ function App() {
       <NavBar />
 
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/launch/:id' element={<SingleLaunch />} />
-        <Route path='*' element={<NotFound />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/launch/:id" element={<SingleLaunch />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
 
       <Footer />

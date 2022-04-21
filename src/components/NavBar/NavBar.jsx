@@ -10,12 +10,12 @@ export default function NavBar() {
 
   const checkHeight = () => {
     if (!path && height >= 500) return 'background';
-    else if (path) return 'details';
+    if (path) return 'details';
   };
 
-  const scrollToElement = (height) => {
+  const scrollToElement = (scrollHeight) => {
     window.scrollTo({
-      top: height,
+      top: scrollHeight,
       left: 0,
       behavior: 'smooth',
     });
@@ -23,25 +23,32 @@ export default function NavBar() {
 
   return (
     <div className={`header ${checkHeight()}`}>
-      <div className='container'>
-        <div className='header-content'>
-          <div className='logo'>
-            <NavLink className='logo-link' to='/'>
+      <div className="container">
+        <div className="header-content">
+          <div className="logo">
+            <NavLink className="logo-link" to="/">
               SpaceX
             </NavLink>
           </div>
           {!path && (
-            <ul className='nav'>
+            <ul className="nav">
               <li>
-                <button className='active' onClick={() => scrollToElement(0)}>
+                <button
+                  type="button"
+                  className="active"
+                  onClick={() => scrollToElement(0)}>
                   Home
                 </button>
               </li>
               <li>
-                <button onClick={() => scrollToElement(760)}>Solar</button>
+                <button type="button" onClick={() => scrollToElement(760)}>
+                  Solar
+                </button>
               </li>
               <li>
-                <button onClick={() => scrollToElement(1360)}>Launches</button>
+                <button type="button" onClick={() => scrollToElement(1360)}>
+                  Launches
+                </button>
               </li>
             </ul>
           )}

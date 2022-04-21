@@ -53,5 +53,16 @@ export default function useLaunchesHook() {
     };
   }, [page]);
 
-  return [launches, filteredResults, error, loading, search, paginate, page,setPage,setFilteredResults,setSearch];
+  return [
+    launches,
+    filteredResults,
+    error,
+    loading,
+    search,
+    paginate,
+    page,
+    setPage,
+    setFilteredResults,
+    setSearch,
+  ];
 }
